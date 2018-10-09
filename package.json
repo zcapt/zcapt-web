@@ -1,0 +1,25 @@
+{
+  "name": "zcapt-web",
+  "version": "1.0.0",
+  "description": "zcapt for web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zcapt/zcapt-web.git"
+  },
+  "keywords": [
+    "zcapt",
+    "captcha",
+    "verification",
+    "robot"
+  ],
+  "author": "Linbin Pang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zcapt/zcapt-web/issues"
+  },
+  "homepage": "https://github.com/zcapt/zcapt-web#readme"
+}
