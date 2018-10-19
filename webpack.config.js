@@ -1,22 +1,21 @@
 const path = require('path');
-
 module.exports = {
+    devtool: "source-map", // Enable source map for debugging
+    entry: './index.js',  // Entry file
 
-  entry: './index.js',  // Entry file
-
-  output: {  // compiled file in ./dist
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'zcapt.js'
-  },
+    output: {  // compiled file in ./dist
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'zcapt.js'
+    },
     module: {
         rules: [
-            { // module for sass
+            { // model for sass
                 test: /\.scss$/,
                 use: [
                     "style-loader",
                     "css-loader",
                     "sass-loader"
-            ]
+                ]
             },
             {
                 test: /\.m?js$/,
@@ -27,8 +26,13 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
+            },
+            {
+                test: /\.js$/,
+                use: ["source-map-loader"],
+                enforce: "pre"
             }
         ]
-    }
+    },
 };
 
