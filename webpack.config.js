@@ -19,7 +19,7 @@ module.exports = {
             },
             {
                 test: /\.m?js$/,
-                exclude: /(node-modules|bower-components)/,
+                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
