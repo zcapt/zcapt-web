@@ -4,7 +4,7 @@ module.exports = {
     entry: './index.js',  // Entry file
 
     output: {  // compiled file in ./dist
-        path: path.resolve(--dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'zcapt.js'
     },
     module: {
