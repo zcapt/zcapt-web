@@ -12,6 +12,3 @@ window.zcapt = {
     // Model data storage
     data:require('./src/model/links')
 };
-
-// For testing
-// require('./src/lib/request/unitTest').initialize();

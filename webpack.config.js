@@ -4,7 +4,7 @@ module.exports = {
     entry: './index.js',  // Entry file
 
     output: {  // compiled file in ./dist
-        path: path.resolve(--dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'zcapt.js'
     },
     module: {
@@ -19,7 +19,7 @@ module.exports = {
             },
             {
                 test: /\.m?js$/,
-                exclude: /(node-modules|bower-components)/,
+                exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
                     options: {

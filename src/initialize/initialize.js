@@ -12,14 +12,8 @@ exports.init = (id,conn) => {
         window.zcapt.data.id = id;
     }catch (e) {
         // If error in "conn" parameter
-        console.log("Conn is incorrect");
+        console.log("Conn is incorrect")
         return null;
     }
-    let initialize = require('../lib/request/initialize').init(window.zcapt.data.initialize);
-    if (initialize === null) {
-        console.log("Error when requesting to server");
-        return null;
-    } else {
-        window.zcapt.data.id = initialize;
-    }
+
 };
