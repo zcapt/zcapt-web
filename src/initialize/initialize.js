@@ -1,5 +1,5 @@
 let Base64 = require('js-base64').Base64;
-exports.init = (id,conn) => {
+exports.init = (id,conn,size) => {
 
     // Parse the links
     try {
@@ -10,10 +10,17 @@ exports.init = (id,conn) => {
         window.zcapt.data.smallPicture = links.small;
         window.zcapt.data.verify = links.veri;
         window.zcapt.data.id = id;
+        window.zcapt.data.size = size;
     }catch (e) {
         // If error in "conn" parameter
-        console.log("Conn is incorrect")
+        console.log("Conn is incorrect");
         return null;
     }
-
+    let initialize = require('../lib/request/initialize').init(window.zcapt.data.initialize);
+    if (initialize === null) {
+        console.log("Error when requesting to server");
+        return null;
+    } else {
+        window.zcapt.data.id = initialize;
+    }
 };
