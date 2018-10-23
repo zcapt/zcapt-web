@@ -12,8 +12,9 @@ window.zcapt = {
     },
 
     // Model data storage
-    data:require('./src/model/links')
+    data:require('./src/model/data')
 };
 
 // For testing
 // require('./src/lib/request/unitTest').initialize();
+require('./src/view/unitTest').frameBuild();
