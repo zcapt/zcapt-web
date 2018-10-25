@@ -1,11 +1,18 @@
 .zcapt-frame {
   display: block;
+  position: relative;
 }
 .zcapt-smallPic {
   display: block;
   position: absolute;
+  top: 10%;
+  left: 3%;
+  z-index: 10;
 }
 .zcapt-largePic {
   display: block;
   position: absolute;
+  top: 5%;
+  left: 13%;
+  z-index: 9;
 }

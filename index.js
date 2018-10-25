@@ -8,7 +8,7 @@ window.zcapt = {
             return null;
         }
         // Start initialization
-        require('./src/initialize/initialize').init(para.id,para.conn,para.size);
+        // require('./src/initialize/initialize').init(para.id,para.conn,para.size);
     },
 
     // Model data storage
