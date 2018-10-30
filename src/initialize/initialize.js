@@ -1,6 +1,12 @@
 let Base64 = require('js-base64').Base64;
 exports.init = (id,conn,size) => {
-
+    /**
+     * Method for initialize the captcha
+     * @para id element's id where the captcha would be made.
+     * @para conn connection code from server side.
+     * @para size the width of the captcha that would be created.
+     * no callback function
+     */
     // Parse the links
     try {
         let links = JSON.parse(Base64.decode(conn));
@@ -16,11 +22,13 @@ exports.init = (id,conn,size) => {
         console.log("Conn is incorrect");
         return null;
     }
-    let initialize = require('../lib/request/initialize').init(window.zcapt.data.initialize);
-    if (initialize === null) {
-        console.log("Error when requesting to server");
-        return null;
-    } else {
-        window.zcapt.data.id = initialize;
-    }
+    require('../request/initialize').init(window.zcapt.data.initialize,(authID) => {
+        if (authID === null) {
+            console.log("Error when requesting to server");
+            return null;
+        } else {
+            window.zcapt.data.authID = authID;
+            require('./buildCaptchaInPage').building();
+        }
+    });
 };

@@ -1,3 +1,5 @@
+// Those are the data that would store in font end
+
 // Initialize Link
 exports.initialize = "";
 

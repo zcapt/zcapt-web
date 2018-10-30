@@ -1,8 +1,14 @@
 exports.importStyle = () => {
+    /*
+    * for import the style of captcha
+    * */
     require('./style/frame.scss');
 };
 
 exports.frameBuild = (boxid,size,smallPicUrl,largePicUrl,callback) => {
+    /*
+    * method for building the basic framework of captcha (Create the document)
+    * */
 
     // Number of pictures are loaded
     let numberOfLoaded = 0;
