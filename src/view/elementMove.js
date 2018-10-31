@@ -1,12 +1,16 @@
 exports.move = (element,moveToX,moveToY) => {
+    /*
+    * Method for moving the element in deceleration mode
+    * */
     let startX = element.offsetLeft;
     let startY = element.offsetTop;
     let deltaX = 0;
     let deltaY = 0;
 
-    // Verify if the picture is on the left or the right toward the original position.
+    // Verify which direction should the element move to.
+
     if (startX < moveToX) {
-        // On the left
+        // Move to the right
         deltaX = moveToX - startX;
         let moveElementRight = () => {
             element.style.left = element.offsetLeft + deltaX / 5 + "px";
@@ -18,7 +22,7 @@ exports.move = (element,moveToX,moveToY) => {
 
         window.requestAnimationFrame(moveElementRight);
     } else {
-        // On the right
+        // Move to the left
         deltaX = startX - moveToX;
 
         let moveElementLeft = () => {
@@ -32,9 +36,8 @@ exports.move = (element,moveToX,moveToY) => {
         window.requestAnimationFrame(moveElementLeft);
     }
 
-    // Verify if the picture is on the top or the bottom toward the original position.
     if (startY < moveToY) {
-        // On the top
+        // Move down
         deltaY = moveToY - startY;
 
         let moveElementDown = () => {
@@ -48,7 +51,7 @@ exports.move = (element,moveToX,moveToY) => {
             window.requestAnimationFrame(moveElementDown);
 
     } else {
-        // On the bottom
+        // Move up
         deltaY = startY - moveToY;
 
         let moveElementUp = () => {
