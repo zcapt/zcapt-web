@@ -16,6 +16,7 @@ exports.frameBuild = (boxid,size,smallPicUrl,largePicUrl,callback) => {
     // Create frame
     let outer = document.createElement("div");
     outer.classList.add('zcapt-frame');
+    outer.id = "zcapt-frame";
     outer.style.height = (25 / 37) * size + "px";
     outer.style.width = size + "px";
 
@@ -23,6 +24,7 @@ exports.frameBuild = (boxid,size,smallPicUrl,largePicUrl,callback) => {
     // Create small picture
     let smallPicture = new Image();
     smallPicture.classList.add('zcapt-smallPic');
+    smallPicture.id = "zcapt-smallPic";
     smallPicture.draggable = false;
     smallPicture.src = smallPicUrl;
     smallPicture.onload = loadedCheck;
@@ -32,6 +34,7 @@ exports.frameBuild = (boxid,size,smallPicUrl,largePicUrl,callback) => {
     let largePicture = new Image();
     largePicture.classList.add('zcapt-largePic');
     largePicture.draggable = false;
+    largePicture.id = "zcapt-largePic";
     largePicture.src = largePicUrl;
     largePicture.onload = loadedCheck;
 

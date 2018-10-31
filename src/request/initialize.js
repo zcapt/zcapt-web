@@ -7,38 +7,25 @@
 exports.init = (initLink,callback) => {
     let req = new XMLHttpRequest();
     req.open("GET",initLink,true);
-    req.send(null);
-    req.onload = () => {
+    req.send();
+    req.addEventListener("load",() => {
         if (req.status !== 200) {
-            verifyCb(callback,null);
-            return null;
+            callback(null);
         }else {
             let response = null;
             try {
                 response = JSON.parse(req.responseText)
             }catch (e) {
-                verifyCb(callback,null);
-                return null;
+                callback(null);
             }
             if (response.status === undefined) {
-                verifyCb(callback,null);
-                return null;
+                callback(null);
             }else if (response.status !== '0') {
-                verifyCb(callback,null);
-                return null;
+                callback(null);
             }else {
                 // Normal
-                verifyCb(callback,response.authID);
-                return null;
+                callback(response.authID);
             }
         }
-    };
-    // When timeout
-    req.timeout = 1000;
-    req.ontimeout = verifyCb(callback,null);
+    });
 };
-function verifyCb(callback,param) {
-    if (callback !== undefined) {
-        callback(param)
-    }
-}

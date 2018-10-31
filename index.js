@@ -17,5 +17,5 @@ window.zcapt = {
 };
 
 // For testing
-// require('./src/lib/request/unitTest').initialize();
-require('./src/view/unitTest').frameBuild();
+// require('./src/request/unitTest').initialize();
+//require('./src/view/unitTest').frameBuild();

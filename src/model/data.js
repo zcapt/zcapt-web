@@ -20,3 +20,9 @@ exports.size = 0;
 
 // Verification ID
 exports.authID = "";
+
+// Small picture initial position in X
+exports.smallPictureInitialPositionX = 0;
+
+// Small picture initial position in Y
+exports.smallPictureInitialPositionY = 0;
