@@ -25,18 +25,28 @@ exports.startMouseMonitor = (smallPictureID,largePictureID) => {
             smallPic.style.left = (onmouseMoveEvent.clientX - distanceXFromCentralMouseToSmallPictureBorder) + "px";
         };
 
-        // While the user release the mouse
-        document.onmouseup = () => {
+        // While the user release the mouse·
+        document.onmouseup = (onmouseUpEvent) => {
 
             // Stop moving
             document.onmousemove = null;
-
+            let largePictureDistanceToScreen = require('./elementDistanceToScreen').distance(largePic);
             // Get coordinate of small picture inside of large picture
             let xCoordinate = ((smallPic.offsetLeft - largePic.offsetLeft) * 300) / largePic.offsetWidth;
             let yCoordinate = ((smallPic.offsetTop - largePic.offsetTop) * 200) / largePic.offsetHeight;
 
-
-            require('../view/elementMove').move(smallPic,window.zcapt.data.smallPictureInitialPositionX,window.zcapt.data.smallPictureInitialPositionY);
+            if (onmouseUpEvent.clientY >  largePictureDistanceToScreen.top&& onmouseUpEvent.clientY < largePictureDistanceToScreen.bottom && onmouseUpEvent.clientX > largePictureDistanceToScreen.left && onmouseUpEvent.clientX < largePictureDistanceToScreen.right) {
+                require('../request/verify').verify(window.zcapt.data.verify,window.zcapt.data.authID,xCoordinate,yCoordinate, (verifyResult) => {
+                    if (verifyResult) {
+                        console.log("success");
+                    }else {
+                        console.log("error");
+                    }
+                })
+            }else {
+                require('../view/elementMove').move(smallPic,window.zcapt.data.smallPictureInitialPositionX,window.zcapt.data.smallPictureInitialPositionY);
+            }
         }
     }
 };
+

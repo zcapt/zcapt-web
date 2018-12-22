@@ -18,6 +18,7 @@ exports.frameBuild = (boxid,size,smallPicUrl,largePicUrl,callback) => {
     outer.classList.add('zcapt-frame');
     outer.id = "zcapt-frame";
     outer.style.height = (25 / 37) * size + "px";
+    outer.setAttribute("unselectable", "on");
     outer.style.width = size + "px";
 
 
@@ -27,6 +28,7 @@ exports.frameBuild = (boxid,size,smallPicUrl,largePicUrl,callback) => {
     smallPicture.id = "zcapt-smallPic";
     smallPicture.draggable = false;
     smallPicture.src = smallPicUrl;
+    smallPicture.setAttribute("unselectable", "on");
     smallPicture.onload = loadedCheck;
 
 
@@ -35,6 +37,7 @@ exports.frameBuild = (boxid,size,smallPicUrl,largePicUrl,callback) => {
     largePicture.classList.add('zcapt-largePic');
     largePicture.draggable = false;
     largePicture.id = "zcapt-largePic";
+    largePicture.setAttribute("unselectable", "on");
     largePicture.src = largePicUrl;
     largePicture.onload = loadedCheck;
 

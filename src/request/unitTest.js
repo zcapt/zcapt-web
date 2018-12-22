@@ -3,3 +3,9 @@ exports.initialize = () => {
         console.log(authID);
     });
 };
+
+exports.verify = () => {
+    require('./verify').init("http://zcapt.org",(authID) => {
+        console.log(authID);
+    });
+};

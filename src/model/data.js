@@ -26,3 +26,6 @@ exports.smallPictureInitialPositionX = 0;
 
 // Small picture initial position in Y
 exports.smallPictureInitialPositionY = 0;
+
+// verified?
+exports.isVerified = false;

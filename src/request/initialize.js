@@ -20,7 +20,7 @@ exports.init = (initLink,callback) => {
             }
             if (response.status === undefined) {
                 callback(null);
-            }else if (response.status !== '0') {
+            }else if (response.status != 0) {
                 callback(null);
             }else {
                 // Normal
