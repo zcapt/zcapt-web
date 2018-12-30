@@ -1,2 +1,11 @@
-let a = "{\"status\":0,\"authID\":4362473754403802}";
-console.log(JSON.parse(a).authID);
+let i = 0;
+j();
+function j() {
+    if (i<20) {
+        console.log(i);
+        i ++;
+        setTimeout(() => {
+            j();
+        },1000);
+    }
+}

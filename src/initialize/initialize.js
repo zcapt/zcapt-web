@@ -7,16 +7,19 @@ exports.init = (id,conn,size) => {
      * @para size the width of the captcha that would be created.
      * no callback function
      */
+    require('../view/initialize').buildFrame(id,size);  // Start Loading
     // Parse the links
     try {
         let links = JSON.parse(Base64.decode(conn));
         // Assign all the links to model data
+        window.zcapt.data.conn = conn;
         window.zcapt.data.initialize = links.init;
         window.zcapt.data.largePicture = links.large;
         window.zcapt.data.smallPicture = links.small;
         window.zcapt.data.verify = links.veri;
         window.zcapt.data.id = id;
         window.zcapt.data.size = size;
+        window.zcapt.data.result = 0;
     }catch (e) {
         // If error in "conn" parameter
         console.log("Conn is incorrect");
