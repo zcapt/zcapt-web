@@ -36,11 +36,13 @@ exports.startMouseMonitor = (smallPictureID,largePictureID) => {
             let yCoordinate = ((smallPic.offsetTop - largePic.offsetTop) * 200) / largePic.offsetHeight;
 
             if (onmouseUpEvent.clientY >  largePictureDistanceToScreen.top&& onmouseUpEvent.clientY < largePictureDistanceToScreen.bottom && onmouseUpEvent.clientX > largePictureDistanceToScreen.left && onmouseUpEvent.clientX < largePictureDistanceToScreen.right) {
+                require('../view/loading').loading.start();
                 require('../request/verify').verify(window.zcapt.data.verify,window.zcapt.data.authID,xCoordinate,yCoordinate, (verifyResult) => {
                     if (verifyResult) {
                         console.log("success");
                     }else {
-                        console.log("error");
+                        require('../view/elementMove').move(smallPic,window.zcapt.data.smallPictureInitialPositionX,window.zcapt.data.smallPictureInitialPositionY);
+                        require('../view/rebuilt').captcha();
                     }
                 })
             }else {
