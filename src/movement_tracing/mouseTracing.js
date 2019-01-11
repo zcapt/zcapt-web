@@ -39,7 +39,9 @@ exports.startMouseMonitor = (smallPictureID,largePictureID) => {
                 require('../view/loading').loading.start();
                 require('../request/verify').verify(window.zcapt.data.verify,window.zcapt.data.authID,xCoordinate,yCoordinate, (verifyResult) => {
                     if (verifyResult) {
-                        console.log("success");
+                        window.zcapt.data.result = 1;
+                        smallPic.onmousedown = null;
+                        require("../view/verified").verified();
                     }else {
                         require('../view/elementMove').move(smallPic,window.zcapt.data.smallPictureInitialPositionX,window.zcapt.data.smallPictureInitialPositionY);
                         require('../view/rebuilt').captcha();
