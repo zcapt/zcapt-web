@@ -37,10 +37,11 @@ exports.startMouseMonitor = (smallPictureID,largePictureID) => {
 
             if (onmouseUpEvent.clientY >  largePictureDistanceToScreen.top&& onmouseUpEvent.clientY < largePictureDistanceToScreen.bottom && onmouseUpEvent.clientX > largePictureDistanceToScreen.left && onmouseUpEvent.clientX < largePictureDistanceToScreen.right) {
                 require('../view/loading').loading.start();
+                smallPic.onmousedown = null;
+                document.onmouseup = null;
                 require('../request/verify').verify(window.zcapt.data.verify,window.zcapt.data.authID,xCoordinate,yCoordinate, (verifyResult) => {
                     if (verifyResult) {
                         window.zcapt.data.result = 1;
-                        smallPic.onmousedown = null;
                         require("../view/verified").verified();
                     }else {
                         require('../view/elementMove').move(smallPic,window.zcapt.data.smallPictureInitialPositionX,window.zcapt.data.smallPictureInitialPositionY);

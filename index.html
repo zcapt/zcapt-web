@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="dist/theme.css">
 </head>
 <body>
-<div>TEST</div>
+<div id="verified" onclick="verify()">Not Verified</div>
 <div id="test"></div>
 </body>
 <script src="dist/zcapt.js"></script>
@@ -17,6 +17,11 @@
             size: 500,
             conn: "eyJpbml0IjoiaHR0cHM6Ly9hcGkudGhhdHNlZWQub3JnL2NhcHRjaGEvbmV3Q2FwdGNoYSIsImxhcmdlIjoiaHR0cHM6Ly9hcGkudGhhdHNlZWQub3JnL2NhcHRjaGEvZ2V0SW1hZ2UiLCJzbWFsbCI6Imh0dHBzOi8vYXBpLnRoYXRzZWVkLm9yZy9jYXB0Y2hhL2dldFNtYWxsSW1hZ2UiLCJ2ZXJpIjoiaHR0cHM6Ly9hcGkudGhhdHNlZWQub3JnL2NhcHRjaGEvdmVyaWZ5In0"
         }
-    )
+    );
+    function verify() {
+        if (zcapt.isVerified()) {
+            document.getElementById("verified").innerText = "Verified";
+        }
+    }
 </script>
 </html>

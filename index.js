@@ -14,9 +14,13 @@ window.zcapt = {
     },
 
     // Model data storage
-    data:require('./src/model/data')
+    data:require('./src/model/data'),
+    
+    isVerified: () => {
+        if (window.zcapt.data.result !== undefined) {
+            return window.zcapt.data.result === 1;
+        }else{
+            return false;
+        }
+    }
 };
-
-// For testing
-// require('./src/request/unitTest').initialize();
-// require('./src/view/unitTest').buildCaptcha();
