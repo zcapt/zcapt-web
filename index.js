@@ -8,7 +8,7 @@ window.zcapt = {
         if (para.id === null || para.conn === null || para.size === null) {
             return null;
         }
-        require('./src/view/initialize').importStyle();  // Import style
+
         // Start initialization
         require('./src/initialize/initialize').init(para.id,para.conn,para.size);
     },

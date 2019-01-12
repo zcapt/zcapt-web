@@ -1,47 +1,43 @@
-exports.startMouseMonitor = (smallPictureID,largePictureID) => {
+exports.startFingerMonitor = (smallPictureID,largePictureID) => {
     /*
-    * Method for mouse monitor
+    * Method for finger touchpoint monitor
     * @param smallPictureID Small picture's element ID
     * @param largePictureID Large picture's element ID
     * */
-
-    // Start Finger touch monitor
-    require("./fingerTracing").startFingerMonitor(smallPictureID,largePictureID);
-
     let smallPic = document.getElementById(smallPictureID);
     let largePic = document.getElementById(largePictureID);
 
 
-    // While the user click on small picture
-    smallPic.onmousedown = (onmouseDownEvent) => {
+    // While the user touch on small picture
+    smallPic.ontouchstart = (ontouchdownEvent) => {
 
         // Get the initial position of small picture
         window.zcapt.data.smallPictureInitialPositionX = smallPic.offsetLeft;
         window.zcapt.data.smallPictureInitialPositionY = smallPic.offsetTop;
 
-        // Get the position of mouse inside the small picture
-        let distanceXFromCentralMouseToSmallPictureBorder = onmouseDownEvent.clientX - smallPic.offsetLeft;
-        let distanceYFromCentralMouseToSmallPictureBorder = onmouseDownEvent.clientY - smallPic.offsetTop;
+        // Get the position of finger inside the small picture
+        let distanceXFromCentralMouseToSmallPictureBorder = ontouchdownEvent.touches[0].clientX - smallPic.offsetLeft;
+        let distanceYFromCentralMouseToSmallPictureBorder = ontouchdownEvent.touches[0].clientY - smallPic.offsetTop;
 
-        // While the user click on the small picture and move the mouse
-        document.onmousemove = (onmouseMoveEvent) => {
-            smallPic.style.top = (onmouseMoveEvent.clientY - distanceYFromCentralMouseToSmallPictureBorder) + "px";
-            smallPic.style.left = (onmouseMoveEvent.clientX - distanceXFromCentralMouseToSmallPictureBorder) + "px";
+        // While the user touch on the small picture and move the mouse
+        document.ontouchmove = (ontouchmove) => {
+            smallPic.style.top = (ontouchmove.touches[0].clientY - distanceYFromCentralMouseToSmallPictureBorder) + "px";
+            smallPic.style.left = (ontouchmove.touches[0].clientX - distanceXFromCentralMouseToSmallPictureBorder) + "px";
         };
 
-        // While the user release the mouse·
-        document.onmouseup = (onmouseUpEvent) => {
+        // While the user release the mouse.
+        document.ontouchend = (onTouchEndEvent) => {
 
             // Stop moving
-            document.onmousemove = null;
+            document.ontouchmove = null;
             let largePictureDistanceToScreen = require('./elementDistanceToScreen').distance(largePic);
             // Get coordinate of small picture inside of large picture
             let xCoordinate = Math.round(((smallPic.offsetLeft - largePic.offsetLeft) * 300) / largePic.offsetWidth);
             let yCoordinate = Math.round(((smallPic.offsetTop - largePic.offsetTop) * 200) / largePic.offsetHeight);
 
-            if (onmouseUpEvent.clientY >  largePictureDistanceToScreen.top&& onmouseUpEvent.clientY < largePictureDistanceToScreen.bottom && onmouseUpEvent.clientX > largePictureDistanceToScreen.left && onmouseUpEvent.clientX < largePictureDistanceToScreen.right) {
+            if (onTouchEndEvent.changedTouches[0].clientY >  largePictureDistanceToScreen.top&& onTouchEndEvent.changedTouches[0].clientY < largePictureDistanceToScreen.bottom && onTouchEndEvent.changedTouches[0].clientX > largePictureDistanceToScreen.left && onTouchEndEvent.changedTouches[0].clientX < largePictureDistanceToScreen.right) {
                 require('../view/loading').loading.start();
-                smallPic.onmousedown = null;
+                smallPic.ontouchstart = null;
                 require('../request/verify').verify(window.zcapt.data.verify,window.zcapt.data.authID,xCoordinate,yCoordinate, (verifyResult) => {
                     if (verifyResult) {
                         window.zcapt.data.result = 1;
@@ -57,4 +53,3 @@ exports.startMouseMonitor = (smallPictureID,largePictureID) => {
         }
     }
 };
-

@@ -1,4 +1,7 @@
 exports.rebuild = (smallPictureLink,largePictureLink,callback = () => {}) => {
+    /**
+     * Rebuilt picture in view. Replace the old pictures by new one.
+     */
 
     let numberOfLoaded = 0;
 
@@ -31,11 +34,11 @@ exports.rebuild = (smallPictureLink,largePictureLink,callback = () => {}) => {
         } else {
             // If one of the picture has already loaded,
             // render them
+            let frame = document.getElementById("zcapt-frame");
+            frame.removeChild(document.getElementById("zcapt-largePic"));
+            frame.removeChild(document.getElementById("zcapt-smallPic"));
+            frame.appendChild(fragment);
             require('./loading').loading.end(() => {
-                let frame = document.getElementById("zcapt-frame");
-                frame.removeChild(document.getElementById("zcapt-largePic"));
-                frame.removeChild(document.getElementById("zcapt-smallPic"));
-                frame.appendChild(fragment);
                 callback(null);
             });
         }

@@ -1,6 +1,143 @@
+/*
+Defined how captcha box looks like
+*/
 .zcapt-frame {
-  background-color: antiquewhite;
-  border: solid #000;
+  display: block;
+  position: relative;
+  background-color: white;
+}
+
+.zcapt-largeRefresh {
+  position: absolute;
+  z-index: 11;
+  width: 100%;
+  height: 100%;
+}
+
+.zcapt-loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 11;
+}
+
+.zcapt-loading div {
+  box-sizing: content-box;
+  position: absolute;
+  border-width: 0.5em;
+  border-style: solid;
+  opacity: 1;
+  border-radius: 50%;
+  animation: zcapt-loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.zcapt-loading div:nth-child(1) {
+  border-color: #AAA;
+}
+
+.zcapt-loading div:nth-child(2) {
+  border-color: #777;
+  animation-delay: -0.5s;
+}
+
+.zcapt-loading {
+  transform: translate(-100%, -100%) scale(1) translate(100%, 100%);
+}
+
+/*
+Loading animation
+ */
+@keyframes zcapt-loading {
+  0% {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    left: 16.6666666667%;
+    width: 66.6666666667%;
+    height: 100%;
+    opacity: 0;
+  }
+}
+.zcapt-appear {
+  animation: zcapt-appear 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.zcapt-disappear {
+  animation: zcapt-disappear 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes zcapt-appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes zcapt-disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.zcapt-smallPic {
+  display: block;
+  position: absolute;
+  top: 18%;
+  left: 5%;
+  width: 13.3333333333%;
+  height: 20%;
+  z-index: 10;
+}
+
+.zcapt-largePic {
+  display: block;
+  position: absolute;
+  bottom: 10%;
+  right: 8%;
+  width: 80%;
+  height: 80%;
+  z-index: 9;
+}
+
+#zcapt-refresh {
+  position: absolute;
+  top: 80%;
+  left: 5%;
+  height: 8%;
+}
+
+#zcapt-largeRefresh {
+  width: 100%;
+  height: 70%;
+  margin-top: 10%;
+}
+
+.zcapt-verified-fill {
+  fill: #04B486;
+}
+
+.zcapt-verified {
+  position: absolute;
+  z-index: 12;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+#zcapt-verified-icon {
+  width: 100%;
+  height: 100%;
 }
 
 /*# sourceMappingURL=theme.css.map */

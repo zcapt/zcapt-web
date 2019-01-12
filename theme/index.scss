@@ -1,4 +1,7 @@
-.zcapt-frame {
-  background-color: antiquewhite;
-  border: solid #000;
-}
+@import "./frame";
+@import "./captcha";
+@import "./loading";
+@import "./appearAndDisappear";
+@import "./pictures";
+@import "./refresh";
+@import "./verified";
