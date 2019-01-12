@@ -98,6 +98,7 @@ Loading animation
   width: 13.3333333333%;
   height: 20%;
   z-index: 10;
+  box-shadow: 0 0 0.1em 0.1em #888;
 }
 
 .zcapt-largePic {
@@ -108,6 +109,7 @@ Loading animation
   width: 80%;
   height: 80%;
   z-index: 9;
+  box-shadow: 0 0 0.2em 0.2em #888;
 }
 
 #zcapt-refresh {
@@ -140,4 +142,4 @@ Loading animation
   height: 100%;
 }
 
-/*# sourceMappingURL=theme.css.map */
+/*# sourceMappingURL=skin.css.map */

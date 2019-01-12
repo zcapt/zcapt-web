@@ -1,0 +1,52 @@
+.zcapt-loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,0.5);
+  z-index: 11;
+}
+
+.zcapt-loading div {
+  box-sizing: content-box;
+  position: absolute;
+  border-width: 0.5em;
+  border-style: solid;
+  opacity: 1;
+  border-radius: 50%;
+  animation: zcapt-loading 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.zcapt-loading div:nth-child(1) {
+  border-color: #AAA;
+}
+
+.zcapt-loading div:nth-child(2) {
+  border-color: #777;
+  animation-delay: -0.5s;
+}
+
+.zcapt-loading {
+  transform: translate(-100%, -100%) scale(1) translate(100%, 100%);
+}
+
+/*
+Loading animation
+ */
+@keyframes zcapt-loading {
+  0% {
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+    $rateBetweenWidthAndHeigh : 2/3;
+    $heigh : 100%;
+    left: ($heigh  - ($rateBetweenWidthAndHeigh * $heigh)) / 2;
+    width: $rateBetweenWidthAndHeigh * $heigh;
+    height: $heigh;
+    opacity: 0;
+  }
+}
