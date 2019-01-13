@@ -7,7 +7,20 @@
   width: $rateBetweenLargePictureAndFrame / 6;
   height: $rateBetweenLargePictureAndFrame / 4;
   z-index: 10;
-  box-shadow: 0 0 0.1em 0.1em #888;
+  box-shadow: 0 0 0.2em 0.2em #FF99CC;
+  opacity: 0.7;
+  border: #FFF solid;
+  border-width: 0;
+  transition: box-shadow 0.5s, opacity 0.3s, border-width 0.4s;
+}
+
+.zcapt-smallPic:hover {
+  box-shadow: 0 0 0 0 #FF99CC;
+  opacity: 1;
+}
+
+.zcapt-smallPic:active {
+  border-width: 0.2em;
 }
 
 .zcapt-largePic {
@@ -18,5 +31,5 @@
   width: 80%;
   height: 80%;
   z-index: 9;
-  box-shadow: 0 0 0.2em 0.2em #888;
+  box-shadow: 0 0 0.1em 0.1em #999;
 }

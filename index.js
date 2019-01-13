@@ -15,7 +15,8 @@ window.zcapt = {
 
     // Model data storage
     data:require('./src/model/data'),
-    
+
+    // API for getting the result of captcha.
     isVerified: () => {
         if (window.zcapt.data.result !== undefined) {
             return window.zcapt.data.result === 1;
