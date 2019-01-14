@@ -11,6 +11,10 @@ exports.startFingerMonitor = (smallPictureID,largePictureID) => {
     // While the user touch on small picture
     smallPic.ontouchstart = (ontouchdownEvent) => {
 
+        // // While the finger is touching on the screen, preventDefault would disable scrolling.
+        ontouchdownEvent.preventDefault();
+
+
         // Get the initial position of small picture
         window.zcapt.data.smallPictureInitialPositionX = smallPic.offsetLeft;
         window.zcapt.data.smallPictureInitialPositionY = smallPic.offsetTop;
