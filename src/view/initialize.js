@@ -1,11 +1,9 @@
-exports.buildFrame = (boxid, size) => {
+exports.buildFrame = (boxid) => {
     // Create frame
     let outer = document.createElement("div");
     outer.classList.add('zcapt-frame');
     outer.id = "zcapt-frame";
-    outer.style.height = (2 / 3) * size + "px";
     outer.setAttribute("unselectable", "on");
-    outer.style.width = size + "px";
     outer.onselectstart = ()=> {
         return false;
     };

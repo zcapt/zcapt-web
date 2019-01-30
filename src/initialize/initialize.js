@@ -1,5 +1,5 @@
 let Base64 = require('js-base64').Base64;
-exports.init = (id,conn,size) => {
+exports.init = (id,conn) => {
     /**
      * Method for initialize the captcha
      * @para id element's id where the captcha would be made.
@@ -7,7 +7,7 @@ exports.init = (id,conn,size) => {
      * @para size the width of the captcha that would be created.
      * no callback function
      */
-    require('../view/initialize').buildFrame(id,size);  // Start Loading
+    require('../view/initialize').buildFrame(id);  // Start Loading
     // Parse the links
     try {
         let links = JSON.parse(Base64.decode(conn));
@@ -18,7 +18,6 @@ exports.init = (id,conn,size) => {
         window.zcapt.data.smallPicture = links.small;
         window.zcapt.data.verify = links.veri;
         window.zcapt.data.id = id;
-        window.zcapt.data.size = size;
         window.zcapt.data.result = 0;
     }catch (e) {
         // If error in "conn" parameter

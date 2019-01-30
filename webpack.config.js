@@ -1,5 +1,6 @@
 const path = require('path');
 module.exports = {
+    mode: "development",
     devtool: "source-map", // Enable source map for debugging
     entry: './index.js',  // Entry file
 

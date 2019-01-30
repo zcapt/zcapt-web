@@ -4,8 +4,8 @@
   "description": "zcapt for web",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack"
+    "dev": "webpack",
+    "skin": "sass skin/index.scss dist/skin.css"
   },
   "repository": {
     "type": "git",

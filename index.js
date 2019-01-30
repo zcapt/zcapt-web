@@ -2,15 +2,15 @@
 window.zcapt = {
     start: (para) => {
         // Nothing to do if no or lack of params
-        if (para.id === undefined || para.conn === undefined || para.size === undefined) {
+        if (para.id === undefined || para.conn === undefined) {
             return null;
         }
-        if (para.id === null || para.conn === null || para.size === null) {
+        if (para.id === null || para.conn === null) {
             return null;
         }
 
         // Start initialization
-        require('./src/initialize/initialize').init(para.id,para.conn,para.size);
+        require('./src/initialize/initialize').init(para.id,para.conn);
     },
 
     // Model data storage

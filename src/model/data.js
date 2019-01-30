@@ -15,9 +15,6 @@ exports.verify = "";
 // Link for element's id that the zcapt would be created
 exports.id = "";
 
-// Size of the zcapt
-exports.size = 0;
-
 // Verification ID
 exports.authID = "";
 
