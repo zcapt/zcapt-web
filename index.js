@@ -1,6 +1,8 @@
 // The entrance
 window.zcapt = {
-    start: (para) => {
+    start: (para,callback = () => {}) => {
+        window.zcapt.onverified = callback;
+
         // Nothing to do if no or lack of params
         if (para.id === undefined || para.conn === undefined) {
             return null;
@@ -23,5 +25,7 @@ window.zcapt = {
         }else{
             return false;
         }
-    }
+    },
+
+    // onverified is a callback function; it would be executed while user has verified the captcha.
 };

@@ -96,7 +96,9 @@
 // The entrance
 window.zcapt = {
   start: function start(para) {
-    // Nothing to do if no or lack of params
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
+    window.zcapt.onverified = callback; // Nothing to do if no or lack of params
+
     if (para.id === undefined || para.conn === undefined) {
       return null;
     }
@@ -117,7 +119,8 @@ window.zcapt = {
     } else {
       return false;
     }
-  }
+  } // onverified is a callback function; it would be executed while user has verified the captcha.
+
 };
 
 /***/ }),
@@ -151,10 +154,10 @@ window.zcapt = {
     'use strict';
     // existing version for noConflict()
     var _Base64 = global.Base64;
-    var version = "2.5.0";
+    var version = "2.4.9";
     // if node.js and NOT React Native, we use Buffer
     var buffer;
-    if ( true && module.exports) {
+    if (typeof module !== 'undefined' && module.exports) {
         try {
             buffer = eval("require('buffer').Buffer");
         } catch (err) {
@@ -279,13 +282,10 @@ window.zcapt = {
         chars.length -= [0, 0, 2, 1][padlen];
         return chars.join('');
     };
-    var _atob = global.atob ? function(a) {
+    var atob = global.atob ? function(a) {
         return global.atob(a);
     } : function(a){
-        return a.replace(/\S{1,4}/g, cb_decode);
-    };
-    var atob = function(a) {
-        return _atob(String(a).replace(/[^A-Za-z0-9\+\/]/g, ''));
+        return a.replace(/[\s\S]{1,4}/g, cb_decode);
     };
     var _decode = buffer ?
         buffer.from && Uint8Array && buffer.from !== Uint8Array.from
@@ -297,7 +297,7 @@ window.zcapt = {
             return (a.constructor === buffer.constructor
                     ? a : new buffer(a, 'base64')).toString();
         }
-        : function(a) { return btou(_atob(a)) };
+        : function(a) { return btou(atob(a)) };
     var decode = function(a){
         return _decode(
             String(a).replace(/[-_]/g, function(m0) { return m0 == '-' ? '+' : '/' })
@@ -352,7 +352,7 @@ window.zcapt = {
     }
     // module.exports and AMD are mutually exclusive.
     // module.exports has precedence.
-    if ( true && module.exports) {
+    if (typeof module !== 'undefined' && module.exports) {
         module.exports.Base64 = global.Base64;
     }
     else if (true) {
@@ -384,7 +384,7 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
+	g = g || Function("return this")() || (1, eval)("this");
 } catch (e) {
 	// This works if the window reference is available
 	if (typeof window === "object") g = window;
@@ -1157,7 +1157,9 @@ exports.verified = function () {
   verifiedIcon.setAttribute("viewBox", "0 0 406.834 406.834");
   verifiedIcon.id = "zcapt-verified-icon";
 
-  __webpack_require__(/*! ./appearAndDisappear */ "./src/view/appearAndDisappear.js").appear(verifiedLayer);
+  __webpack_require__(/*! ./appearAndDisappear */ "./src/view/appearAndDisappear.js").appear(verifiedLayer, function () {
+    window.zcapt.onverified();
+  });
 
   verifiedLayer.appendChild(verifiedIcon);
   frame.appendChild(verifiedLayer);
