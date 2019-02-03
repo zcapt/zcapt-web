@@ -27,5 +27,5 @@ window.zcapt = {
         }
     },
 
-    // onverified is a callback function; it would be executed while user has verified the captcha.
+    authID: this.data.authID
 };
