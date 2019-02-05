@@ -25,7 +25,5 @@ window.zcapt = {
         }else{
             return false;
         }
-    },
-
-    authID: this.data.authID
+    }
 };

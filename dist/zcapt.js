@@ -119,8 +119,7 @@ window.zcapt = {
     } else {
       return false;
     }
-  } // onverified is a callback function; it would be executed while user has verified the captcha.
-
+  }
 };
 
 /***/ }),
