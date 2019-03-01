@@ -4,8 +4,8 @@
   "description": "zcapt for web",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack",
-    "skin": "sass skin/index.scss dist/skin.css"
+    "build": "webpack && sass skin/index.scss dist/skin.css",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -29,12 +29,14 @@
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.0",
     "js-base64": "^2.4.9",
+    "mocha": "^6.0.2",
     "node-nightly": "^1.7.3",
     "node-sass": "^4.9.3",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "xmlhttprequest": "^1.8.0"
   }
 }
