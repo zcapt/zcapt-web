@@ -25,5 +25,14 @@ window.zcapt = {
         }else{
             return false;
         }
+    },
+
+    // Get AuthID
+    getAuthID: () => {
+        if (window.zcapt.data.authID !== undefined) {
+            return window.zcapt.data.authID;
+        } else {
+            return null;
+        }
     }
 };

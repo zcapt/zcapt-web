@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack && sass skin/index.scss dist/skin.css",
-    "test": "mocha"
+    "test": "mocha",
+    "unitTest": "mocha test/unitTest/index.js",
+    "integrationTest": "mocha test/integrationTest/index.js"
   },
   "repository": {
     "type": "git",
