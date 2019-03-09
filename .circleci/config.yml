@@ -7,6 +7,5 @@ jobs:
       - checkout
       - run:
           name: Install Dependence
-          command: |
-            npm install
+          command: npm install
       - run: echo "Done"
