@@ -33,7 +33,7 @@
     "js-base64": "^2.4.9",
     "mocha": "^6.0.2",
     "node-nightly": "^1.7.3",
-    "node-sass": "^4.9.3",
+    "node-sass": "^7.0.0",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
