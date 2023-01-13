@@ -38,7 +38,7 @@
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
+    "webpack-cli": "^3.3.12",
     "xmlhttprequest": "^1.8.0"
   }
 }
